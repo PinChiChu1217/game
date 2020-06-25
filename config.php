@@ -21,42 +21,33 @@ function debug_to_console($data) {
     echo "<script>console.log('Debug Objects: " . $data. "' );</script>";
 }
 
-$sql1="SELECT DISTINCT class"
-$result1=mysqli_query($link, $sql1);
+$query_distinct_class = "SELECT DISTINCT class FROM job_list";
 
-while($row1=mysqli_fetch_array($result1)){
-
-  $sql = "SELECT name,class,detail FROM job_list" WHERE class=$row1['class'];
-  if($result = mysqli_query($link, $sql)){
-      if(mysqli_num_rows($result) > 0){
-          echo "<table>";
-              echo "<tr>";
-                  echo "<th>name</th>";
-                  echo "<th>class</th>";
-                  echo "<th>method</th>";
-              echo "</tr>";
-          while($row = mysqli_fetch_array($result)){
-              echo "<tr>";
-                  echo "<td>" . $row['name'] . "</td>";
-                  echo "<td>" . $row['class'] . "</td>";
-                  echo "<td>" . $row['detail'] . "</td>";
-              echo "</tr>";
-          }
-          echo "</table>";
-          // Free result set
-          mysqli_free_result($result);
-      } else{
-          echo "No records matching your query were found.";
-      }
-  } else{
-      echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-  }
+if ($result_distinct_class = mysqli_query($link, $query_distinct_class)) {
+    if(mysqli_num_rows($result_distinct_class) > 0) {
+        echo "<table>";
+            echo "<tr>";
+            echo "<th>name</th>";
+                echo "<th>class</th>";
+                echo "<th>method</th>";
+            echo "</tr>";
+        while($row = mysqli_fetch_array($result_distinct_class)){
+            echo "<tr>";
+                echo "<td>" . $row['name'] . "</td>";
+                echo "<td>" . $row['class'] . "</td>";
+                echo "<td>" . $row['detail'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        // Free result set
+        mysqli_free_result($result_distinct_class);
+    } else {
+        echo "No records matching your query were found.";
+    }
 }
-
-
-
-
-
+else {
+    echo "ERROR: Could not able to execute $query_distinct_class. " . mysqli_error($link);
+}
 
 // Close connection
 mysqli_close($link);
