@@ -18,10 +18,6 @@ debug_to_console($link->host_info . "\n");
 
 // Show echo string in Browser Console log 
 function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
-
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    echo "<script>console.log('Debug Objects: " . $data. "' );</script>";
 }
 ?>
