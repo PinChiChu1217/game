@@ -1,3 +1,9 @@
+<?php
+
+require 'config.php'
+
+ ?>
+
 <html>
 <head>
   <title>標準種植流程輸入畫面</title>
