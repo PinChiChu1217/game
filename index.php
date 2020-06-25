@@ -1,9 +1,6 @@
 <?php
-
-require 'config.php'
-
- ?>
-
+require 'config.php' 
+?>
 <html>
 <head>
   <title>標準種植流程輸入畫面</title>
@@ -30,7 +27,7 @@ require 'config.php'
     <label for ="Addprocessday">輸入日期：<label>
     <input type="date" name="date">
 
-
+  <!-- TODO: should dynamically fetch the current data from SQL -->
   <div>
     <label for ="class">選擇農作項目：<label>
       <select name="class">
