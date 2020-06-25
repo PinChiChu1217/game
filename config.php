@@ -21,8 +21,12 @@ function debug_to_console($data) {
     echo "<script>console.log('Debug Objects: " . $data. "' );</script>";
 }
 
+$sql1="SELECT DISTINCT class"
+$result1=mysqli_query($link, $sql1);
 
-  $sql = "SELECT name,class,detail,method FROM job_list";
+while($row1=mysqli_fetch_array($result1)){
+
+  $sql = "SELECT name,class,detail FROM job_list" WHERE class=$row1['class'];
   if($result = mysqli_query($link, $sql)){
       if(mysqli_num_rows($result) > 0){
           echo "<table>";
@@ -47,15 +51,12 @@ function debug_to_console($data) {
   } else{
       echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
   }
+}
 
 
 
 
 
-
-// Close connection
-mysqli_close($link);
-?>
 
 // Close connection
 mysqli_close($link);
